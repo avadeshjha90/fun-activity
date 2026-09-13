@@ -1,0 +1,637 @@
+```html
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ARIFA SULTANA Special 😂</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, #ff4ecd55, transparent 35%),
+        radial-gradient(circle at bottom right, #784ba055, transparent 35%),
+        linear-gradient(135deg, #120018, #310047, #16001f);
+      color: white;
+      display: flex;
+      justify-content: center;
+      padding: 25px 15px;
+      overflow-x: hidden;
+    }
+
+    .floating {
+      position: fixed;
+      font-size: 30px;
+      opacity: 0.25;
+      animation: float 6s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    .f1 { top: 10%; left: 5%; }
+    .f2 { top: 30%; right: 7%; animation-delay: 1s; }
+    .f3 { bottom: 15%; left: 8%; animation-delay: 2s; }
+    .f4 { bottom: 8%; right: 10%; animation-delay: 3s; }
+
+    .container {
+      width: 100%;
+      max-width: 550px;
+      text-align: center;
+    }
+
+    .top-emoji {
+      font-size: 65px;
+      animation: bounce 1.5s infinite;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin: 8px 0;
+      text-shadow: 0 0 20px #ff4ecd;
+    }
+
+    .subtitle {
+      color: #ddd;
+      margin-bottom: 22px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(15px);
+      border-radius: 28px;
+      padding: 25px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .name {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(90deg,#ff3cac,#784ba0);
+      padding: 7px 15px;
+      border-radius: 30px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .question-box {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.25);
+    }
+
+    .question {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .option {
+      width: 100%;
+      padding: 13px;
+      margin: 7px 0;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 15px;
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .option:hover {
+      transform: scale(1.02);
+      background: rgba(255,255,255,0.18);
+    }
+
+    .progress {
+      margin: 18px 0;
+      color: #ccc;
+      font-size: 13px;
+    }
+
+    .bar {
+      height: 9px;
+      background: #222;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg,#ff3cac,#784ba0);
+      transition: 0.4s;
+    }
+
+    #heightChallenge,
+    #result {
+      display: none;
+    }
+
+    .height-icon {
+      font-size: 65px;
+      margin-bottom: 10px;
+      animation: bounce 1.5s infinite;
+    }
+
+    .height-question {
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    .button-area {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      overflow: hidden;
+    }
+
+    .yes-btn,
+    .no-btn {
+      position: absolute;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 30px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .yes-btn {
+      left: 25%;
+      top: 65px;
+      background: #20c997;
+      color: white;
+    }
+
+    .no-btn {
+      left: 55%;
+      top: 65px;
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .yes-btn:hover {
+      transform: scale(1.08);
+    }
+
+    .no-message {
+      min-height: 30px;
+      margin-top: 15px;
+      color: #ff9ddd;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .result-title {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .score {
+      font-size: 55px;
+      margin: 15px;
+    }
+
+    .report {
+      background: rgba(0,0,0,0.3);
+      border-radius: 20px;
+      padding: 20px;
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    .report b {
+      color: #ff75d8;
+    }
+
+    .restart {
+      margin-top: 20px;
+      padding: 14px 25px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(90deg,#ff3cac,#784ba0);
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .footer {
+      margin-top: 20px;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0) rotate(0);
+      }
+      50% {
+        transform: translateY(-30px) rotate(15deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="floating f1">😂</div>
+  <div class="floating f2">📏</div>
+  <div class="floating f3">🤣</div>
+  <div class="floating f4">👑</div>
+
+  <div class="container">
+
+    <div class="top-emoji">👑😂</div>
+
+    <h1>ARIFA SULTANA SPECIAL</h1>
+
+    <p class="subtitle">
+      🚨 Highly Classified Friendship Investigation 🚨
+    </p>
+
+    <div class="card">
+
+      <div class="name">Arifa Sultana 😎</div>
+
+      <div class="badge">
+        OFFICIAL FUN QUIZ
+      </div>
+
+      <div id="quiz">
+
+        <div class="progress">
+          Question <span id="current">1</span> / 5
+        </div>
+
+        <div class="bar">
+          <div class="bar-fill" id="bar"></div>
+        </div>
+
+        <div class="question-box">
+
+          <div class="question" id="question">
+            Loading...
+          </div>
+
+          <div id="options"></div>
+
+        </div>
+
+      </div>
+
+      <div id="heightChallenge">
+
+        <div class="height-icon">📏😂</div>
+
+        <div class="height-question">
+          Kya Arifa Sultana ki height<br>
+          chhoti hai to ham use bauni bol sakte hain? 👀
+        </div>
+
+        <div class="button-area" id="buttonArea">
+
+          <button class="yes-btn" onclick="yesClicked()">
+            YES 😂
+          </button>
+
+          <button class="no-btn" id="noBtn" onclick="noClicked()">
+            NO 😎
+          </button>
+
+        </div>
+
+        <div class="no-message" id="noMessage"></div>
+
+      </div>
+
+      <div id="result">
+
+        <div class="result-title">
+          🎉 REPORT READY 🎉
+        </div>
+
+        <div class="score">
+          🏆😂
+        </div>
+
+        <div class="report">
+
+          <p>👑 <b>Name:</b> Arifa Sultana</p>
+
+          <p>📏 <b>Height Status:</b> Compact Edition</p>
+
+          <p>😎 <b>Attitude:</b> Full Size</p>
+
+          <p>😂 <b>Friendship Level:</b> Dangerous</p>
+
+          <p>🧠 <b>Common Sense:</b> Under Investigation</p>
+
+          <p>👑 <b>Official Title:</b> Queen of Compact Mode</p>
+
+          <br>
+
+          <p>
+            💀 Final Verdict:
+            Arifa Sultana ki height compact hai,
+            lekin attitude bilkul
+            <b>FULL SIZE</b> hai! 😂❤️
+          </p>
+
+        </div>
+
+        <button class="restart" onclick="restartQuiz()">
+          🔄 Dobara Test Karo
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="footer">
+      ❤️ Made for friendship & fun only 😂
+    </div>
+
+  </div>
+
+  <script>
+
+    /* GOOGLE APPS SCRIPT URL */
+    const SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbyu9PTT44yTmEbvIftrwayK40nCAdiJtu6lzFW6Q8CzgzB4DmbixkzkEUKGQUavmD9V8g/exec";
+
+
+    const questions = [
+
+      {
+        q: "📏 Arifa Sultana ki height ka secret kya hai?",
+        options: [
+          "A) Growth update pending 😂",
+          "B) Compact mode ON 😭",
+          "C) Height ne chhutti le rakhi hai 🤣",
+          "D) Secret classified hai 🤫"
+        ]
+      },
+
+      {
+        q: "👑 Arifa Sultana ka attitude kaisa hai?",
+        options: [
+          "A) Normal",
+          "B) Thoda zyada 😎",
+          "C) Height se 10x bada 😂",
+          "D) Unlimited ♾️"
+        ]
+      },
+
+      {
+        q: "😂 Agar Arifa Sultana crowd mein kho jaye to?",
+        options: [
+          "A) Search party bulayenge",
+          "B) Camera zoom karenge 🔍",
+          "C) Drone bhejenge 🚁",
+          "D) Woh khud hi mil jayegi 😭"
+        ]
+      },
+
+      {
+        q: "📦 Arifa Sultana ka best edition kaunsa hai?",
+        options: [
+          "A) Mini Edition",
+          "B) Compact Edition",
+          "C) Pocket Edition 😂",
+          "D) Limited Edition 👑"
+        ]
+      },
+
+      {
+        q: "🔥 Arifa Sultana ki sabse badi quality?",
+        options: [
+          "A) Cute 😇",
+          "B) Funny 😂",
+          "C) Full attitude 😎",
+          "D) Ye sab + thodi si pagal 🤣"
+        ]
+      }
+
+    ];
+
+
+    let currentQuestion = 0;
+
+    let answers = [];
+
+
+    function loadQuestion() {
+
+      document.getElementById("current").innerText =
+        currentQuestion + 1;
+
+      document.getElementById("bar").style.width =
+        ((currentQuestion + 1) / questions.length * 100) + "%";
+
+      document.getElementById("question").innerText =
+        questions[currentQuestion].q;
+
+      const optionsDiv =
+        document.getElementById("options");
+
+      optionsDiv.innerHTML = "";
+
+      questions[currentQuestion].options.forEach(option => {
+
+        const button = document.createElement("button");
+
+        button.className = "option";
+        button.innerText = option;
+
+        button.onclick = function() {
+          selectAnswer(option);
+        };
+
+        optionsDiv.appendChild(button);
+
+      });
+
+    }
+
+
+    function selectAnswer(answer) {
+
+      answers[currentQuestion] = answer;
+
+      currentQuestion++;
+
+      if (currentQuestion < questions.length) {
+
+        loadQuestion();
+
+      } else {
+
+        document.getElementById("quiz").style.display =
+          "none";
+
+        document.getElementById("heightChallenge").style.display =
+          "block";
+
+      }
+
+    }
+
+
+    const noMessages = [
+      "😂 NO allowed nahi hai!",
+      "🤣 Arre button se bachne ki koshish mat karo!",
+      "📏 Sach accept karo Arifa!",
+      "😭 NO button tumse door bhaag raha hai!",
+      "😂 Itni aasani se nahi maanogi!",
+      "👀 Button bhi sach jaanta hai!",
+      "🤣 Try again... agar pakad pao to!",
+      "📏 Height Department watching you 👀"
+    ];
+
+
+    function noClicked() {
+
+      const button = document.getElementById("noBtn");
+      const area = document.getElementById("buttonArea");
+
+      const maxX =
+        Math.max(0, area.clientWidth - button.offsetWidth - 10);
+
+      const maxY =
+        Math.max(0, area.clientHeight - button.offsetHeight - 10);
+
+      const randomX =
+        Math.floor(Math.random() * maxX);
+
+      const randomY =
+        Math.floor(Math.random() * maxY);
+
+      button.style.left = randomX + "px";
+      button.style.top = randomY + "px";
+
+      const randomMessage =
+        noMessages[
+          Math.floor(Math.random() * noMessages.length)
+        ];
+
+      document.getElementById("noMessage").innerText =
+        randomMessage;
+
+    }
+
+
+    function yesClicked() {
+
+      sendResponses("YES");
+
+      document.getElementById("heightChallenge").style.display =
+        "none";
+
+      document.getElementById("result").style.display =
+        "block";
+
+    }
+
+
+    function sendResponses(heightAnswer) {
+
+      const data = {
+
+        q1: answers[0] || "",
+        q2: answers[1] || "",
+        q3: answers[2] || "",
+        q4: answers[3] || "",
+        q5: answers[4] || "",
+
+        heightQuestion: heightAnswer,
+
+        name: "Arifa Sultana"
+
+      };
+
+
+      fetch(SCRIPT_URL, {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+
+        body: JSON.stringify(data)
+
+      }).catch(error => {
+
+        console.log("Response send error:", error);
+
+      });
+
+    }
+
+
+    function restartQuiz() {
+
+      currentQuestion = 0;
+
+      answers = [];
+
+      document.getElementById("result").style.display =
+        "none";
+
+      document.getElementById("heightChallenge").style.display =
+        "none";
+
+      document.getElementById("quiz").style.display =
+        "block";
+
+      document.getElementById("noBtn").style.left =
+        "55%";
+
+      document.getElementById("noBtn").style.top =
+        "65px";
+
+      document.getElementById("noMessage").innerText =
+        "";
+
+      loadQuestion();
+
+    }
+
+
+    loadQuestion();
+
+  </script>
+
+</body>
+</html>
+```
